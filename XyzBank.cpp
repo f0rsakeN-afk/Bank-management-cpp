@@ -1,6 +1,8 @@
 #include <iostream>
-#include <bits/stdc++.h>
+#include <vector>
+#include <string>
 using namespace std;
+
 class BankManagementSystem
 {
 private:
@@ -16,7 +18,7 @@ public:
   void deposit(double amount)
   {
     balance += amount;
-    cout << "Deposited Rs." << amount << 'successfully' << endl;
+    cout << "Deposited Rs." << amount << " successfully." << endl;
   }
 
   // function to withdraw amount
@@ -25,7 +27,7 @@ public:
     if (amount <= balance)
     {
       balance -= amount;
-      cout << "Withdrawl of Rs." << amount << "successful." << endl;
+      cout << "Withdrawal of Rs." << amount << " successful." << endl;
     }
     else
     {
@@ -36,9 +38,9 @@ public:
   // display all the user info
   void display()
   {
-    cout << "Account Number:" << accountNumber << endl;
-    cout << "Account Holder Name:" << accountHolderName << endl;
-    cout << "Balance:" << balance << endl;
+    cout << "Account Number: " << accountNumber << endl;
+    cout << "Account Holder Name: " << accountHolderName << endl;
+    cout << "Balance: " << balance << endl;
   }
 
   // function to get account Number
@@ -72,13 +74,13 @@ public:
   }
 
   // withdraw validation
-  int withdraw(int a, int m)
+  int withdraw(int a, double m)
   {
     for (int i = 0; i < accounts.size(); i++)
     {
       if (accounts[i].getAccountNumber() == a)
       {
-        accounts[i].deposit(m);
+        accounts[i].withdraw(m);
         return 1;
       }
     }
@@ -87,7 +89,7 @@ public:
   }
 
   // deposit
-  int deposit(int accountNumber, int amount)
+  int deposit(int accountNumber, double amount)
   {
     for (int i = 0; i < accounts.size(); i++)
     {
@@ -101,17 +103,18 @@ public:
     return -1;
   }
 };
+
 int main()
 {
   Bank X;
   int choice;
   do
   {
-    cout << "1.Add account" << endl;
-    cout << "2.Display all the accounts" << endl;
-    cout << "3.Deposit money" << endl;
-    cout << "4.Withdraw money" << endl;
-    cout << "5.exit" << endl;
+    cout << "1. Add account" << endl;
+    cout << "2. Display all the accounts" << endl;
+    cout << "3. Deposit money" << endl;
+    cout << "4. Withdraw money" << endl;
+    cout << "5. Exit" << endl;
     cin >> choice;
 
     switch (choice)
@@ -132,7 +135,7 @@ int main()
       X.addAccount(newAccount);
       break;
     }
-    case2:
+    case 2:
     {
       X.displayAllAccounts();
       break;
@@ -154,14 +157,13 @@ int main()
       double amount;
       cout << "Enter account number:";
       cin >> accountNumber;
-      cout << "Enter the withdrawl amount:";
+      cout << "Enter the withdrawal amount:";
       cin >> amount;
       X.withdraw(accountNumber, amount);
+      break;
     }
-
     default:
-
-      cout << "Invalid choice!!";
+      cout << "Invalid choice!!" << endl;
     }
   } while (choice != 5);
 
