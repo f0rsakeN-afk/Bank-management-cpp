@@ -144,9 +144,9 @@ int main()
     {
       int accountNumber;
       double amount;
-      cout << "Enter account Number:" << endl;
+      cout << "Enter account Number:";
       cin >> accountNumber;
-      cout << "Enter deposit amount:" << endl;
+      cout << "Enter deposit amount:";
       cin >> amount;
       X.deposit(accountNumber, amount);
       break;
